@@ -1,0 +1,85 @@
+import java.sql.*;
+import java.util.Scanner;
+
+public class college_DB {
+    static Connection con;
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        int ch;
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/college_DB","root","root");
+        Scanner scr = new Scanner(System.in);
+        System.out.println("Menu\n1. Insert\n2. Delete\n3. Update\n4. Display\n");
+        do {
+            System.out.println("Enter your choice : ");
+            ch = scr.nextInt();
+            switch (ch)
+            {
+                case 1:
+                    insert();
+                    break;
+                case 2:
+                    delete();
+                    break;
+                case 3:
+                    update();
+                    break;
+                case 4:
+                    display();
+                    break;
+                default:
+                    return;
+            }
+        }while (ch<5);
+    }
+    public static void insert() throws SQLException {
+
+        Scanner scr = new Scanner(System.in);
+        System.out.println("Enter your id");
+        int id = scr.nextInt();
+        System.out.println("Enter your name");
+        String name = scr.next();
+        System.out.println("Enter your Mobile Number");
+        String mobile = scr.next();
+        System.out.println("Enter your Email Id");
+        String email = scr.next();
+        String query = "insert into student values(?,?,?,?)";
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setInt(1, id);
+        pst.setString(2, name);
+        pst.setString(3, mobile);
+        pst.setString(4, email);
+        int n = pst.executeUpdate();
+        System.out.println(n + " Rows inserted...");
+    }
+    public static void display() throws SQLException {
+        String query = "select * from student";
+        PreparedStatement pst = con.prepareStatement(query);
+        ResultSet set = pst.executeQuery();
+        while(set.next())
+        {
+            System.out.println(set.getString("name") + " : " + set.getString("mobile"));
+        }
+    }
+    public static void delete() throws SQLException {
+        Scanner scr = new Scanner(System.in);
+        System.out.println("Enter your id ");
+        int id = scr.nextInt();
+        String query = "delete from student where id = "+id+"";
+        PreparedStatement pst = con.prepareStatement(query);
+        int n = pst.executeUpdate();
+        System.out.println(n+" Rows deleted...");
+    }
+    public static void update() throws SQLException {
+
+        Scanner scr = new Scanner(System.in);
+        System.out.println("Enter your id to update ");
+        int id = scr.nextInt();
+        System.out.println("Enter your name to update ");
+        String name = scr.next();
+        String query = "update student set name='"+name+"' where id="+id+"";
+        PreparedStatement pst = con.prepareStatement(query);
+        int n = pst.executeUpdate();
+        System.out.println(n+" Rows updated...");
+
+    }
+}
