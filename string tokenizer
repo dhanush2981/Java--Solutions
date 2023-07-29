@@ -1,0 +1,19 @@
+string tokenizer
+
+import java.util.StringTokenizer;
+import java.lang.*;
+public class StringTokenizer_program extends Thread{
+    public static void main(String [] args) {
+        StringTokenizer str = new StringTokenizer("welcome to java class ");
+        try {
+            while (str.hasMoreTokens()) {
+                Thread.sleep(500);
+                System.out.println(str.nextToken());
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
+}
