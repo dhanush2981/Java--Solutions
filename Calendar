@@ -1,0 +1,21 @@
+//calendar programs
+
+
+import java.util.Calendar;
+public class Calendar_program {
+    public static void main(String[] args){
+        Calendar c = Calendar.getInstance();
+        System.out.println("the current time is : "+c.getTime());
+        System.out.print("thr Current Date is :"+c.get(Calendar.DATE)+"/");
+        System.out.print(c.get(Calendar.MONTH)+"/");
+        System.out.println(c.get(Calendar.YEAR));
+        System.out.print("The Current Time is "+c.get(Calendar.HOUR)+":");
+        System.out.print(c.get(Calendar.MINUTE)+":");
+        System.out.println(c.get(Calendar.SECOND));
+        System.out.println("The Maximum hour in a day is : "+c.getMaximum(Calendar.HOUR_OF_DAY));
+        System.out.println("The Minimum hour in a day is : "+c.getMinimum(Calendar.HOUR_OF_DAY));
+        System.out.println("The Minimum days in a week is : "+c.getMinimum(Calendar.DAY_OF_WEEK));
+        System.out.println("The Maximum days in a week is : "+c.getMaximum(Calendar.DAY_OF_WEEK));
+        System.out.println("The Maximum weeks in a year is : "+c.getMaximum(Calendar.WEEK_OF_YEAR));
+    }
+}
