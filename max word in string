@@ -1,0 +1,25 @@
+import java.util.*;
+class prog
+{
+    public static void main(String[] args)
+    {
+        Scanner in=new Scanner(System.in);
+        String s=in.nextLine();
+        String w[]=s.split(" ");
+        String max="";
+        for(String word:w)
+        {
+            
+                if(word.length()>max.length())
+                {
+                    
+                
+                
+                max=word;
+            }
+           
+        }
+         System.out.println(max);
+    }
+}
+
