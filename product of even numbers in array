@@ -1,0 +1,43 @@
+import java.util.*;
+class prog
+{
+    public static void main(String[] args)
+   
+    {
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int a[]=new int[n];
+    int p;
+    int prod[]=new int[n];
+    int c=0;
+    for(int i=0;i<n;i++)
+       {
+            a[i]=sc.nextInt();
+            p=1;
+            int t=a[i];
+            if(t%2==0)
+            {
+                while(t>0)
+                {
+                    int r=t%10;
+                    p=p*r;
+                    t=t/10;
+                   
+                }
+                prod[c]=p;
+                c++;
+            }
+       }
+       if(c==0)
+       {
+           System.out.print("No Even Numbers");
+       }
+       else
+       {
+           for(int i=0;i<c;i++)
+           {
+               System.out.print(prod[i]+" ");
+           }
+       }
+}
+}
